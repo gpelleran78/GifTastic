@@ -1,10 +1,11 @@
 $(document).ready(function () {
     $(function () {
         populateButtons(searchArray, 'searchButtons', '#buttonsArea');
-        console.log("page loaded");
+        // console.log("page loaded");
     });
 
     var searchArray = ['Voltron', 'G.I. Joe', 'Knight Rider'];
+
     function populateButtons(searchArray, classToAdd, areaToAddTo) {
         $(areaToAddTo).empty();
         for (var i = 0; i < searchArray.length; i++) {
@@ -18,11 +19,11 @@ $(document).ready(function () {
 
     $(document).on('click', '.searchButtons', function () {
         var type = $(this).data('type');
-        var querryURL = 'http:api.giphy.com/vl/gifs/search?=' + type + '&api_key=tD8tUjnJFLDR4YhnvHRnX7AYDTXIXnFv';
-        $.ajax({ url: querryURL, method: "GET" })
+        var querryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=tD8tUjnJFLDR4YhnvHRnX7AYDTXIXnFv&limit=10';
+        $.ajax({ url: querryURL, method:'GET' })
             .done(function (response) {
                 // console.log(response);
-                for (var i = 0; i < response.data.length; i++) {
+                for (var i=0; i<response.data.length; i++) {
                     var searchDiv = $('<div class="search-item">');
                     var rating = response.data[i].rating;
                     var p = $('<p>').text('Rating: ' + rating);
@@ -42,23 +43,22 @@ $(document).ready(function () {
         // console.log(type);
     });
 
-    $(document).on('click','.searchImage', function(){
+    $(document).on('click', '.searchImage', function () {
         var state = $(this).attr('data-state');
-        if(state == 'still'){
+        if (state == 'still') {
             $(this).attr('src', $(this).data('animated'));
             $(this).attr("data-state", 'animated');
         }
-        else{
+        else {
             $(this).attr('src', $(this).data('still'));
             $(this).attr("data-state", 'still');
         }
     });
-    
 
     $('#addSearch').on('click', function () {
         var newSearch = $('input').eq(0).val();
         searchArray.push(newSearch);
-        populateButtons(searchArray, 'searchButton', '#ButtonsArea');
+        populateButtons(searchArray, 'searchButtons', '#buttonsArea');
         return false;
     })
 
