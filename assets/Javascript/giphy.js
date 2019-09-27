@@ -4,7 +4,7 @@ $(document).ready(function () {
         // console.log("page loaded");
     });
 
-    var searchArray = ['Voltron', 'G.I. Joe', 'Knight Rider'];
+    var searchArray = ['Voltron', 'G.I. Joe', 'Knight Rider','Boba Fett'];
 
     function populateButtons(searchArray, classToAdd, areaToAddTo) {
         $(areaToAddTo).empty();
