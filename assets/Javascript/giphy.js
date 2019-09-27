@@ -13,7 +13,7 @@ $(document).ready(function () {
             a.addClass(classToAdd);
             a.attr('data-type', searchArray[i]);
             a.text(searchArray[i]);
-            $(areaToAddTo).append(a);
+            $(areaToAddTo).prepend(a);
         }
     }
 
@@ -35,9 +35,9 @@ $(document).ready(function () {
                     image.attr('data-animated', animated);
                     image.attr('data-state', 'still');
                     image.addClass('searchImage');
-                    searchDiv.append(p);
-                    searchDiv.append(image);
-                    $('#searches').append(searchDiv);
+                    searchDiv.prepend(p);
+                    searchDiv.prepend(image);
+                    $('#searches').prepend(searchDiv);
                 };
             });
         // console.log(type);
