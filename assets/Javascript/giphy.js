@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.searchButtons', function () {
         var type = $(this).data('type');
-        var querryURL = 'http://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=tD8tUjnJFLDR4YhnvHRnX7AYDTXIXnFv&limit=10';
+        var querryURL = 'https://api.giphy.com/v1/gifs/search?q=' + type + '&api_key=tD8tUjnJFLDR4YhnvHRnX7AYDTXIXnFv&limit=10';
         $.ajax({ url: querryURL, method:'GET' })
             .done(function (response) {
                 // console.log(response);
